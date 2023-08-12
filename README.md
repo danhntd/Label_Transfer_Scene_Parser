@@ -1,6 +1,6 @@
 # Nighttime Scene Understanding with Label Transfer Scene Parser
 
-This reposity is the official implementation of the paper entitled: **Nighttime Scene Understanding with Label Transfer Scene Parser**.
+This reposity is the official implementation of the paper entitled: **Nighttime Scene Understanding with Label Transfer Scene Parser**. <br>
 **Authors**: Thanh-Danh Nguyen, Nguyen Phan, Tam V. Nguyen*, Vinh-Tiep Nguyen, and Minh-Triet Tran.
 
 
@@ -8,7 +8,7 @@ This reposity is the official implementation of the paper entitled: **Nighttime 
 Download and install Anaconda with the recommended version from [Anaconda Homepage](https://www.anaconda.com/download): [Anaconda3-2019.03-Linux-x86_64.sh](https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh) 
  
 ```
-cd <your_folder>
+cd <your_root>/Label_Transfer_Scene_Parser/
 curl -O https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh
 bash Anaconda3-2019.03-Linux-x86_64.sh
 ```
@@ -26,6 +26,11 @@ conda env update -f enviroment.yml --prune
 ## 2. Data Preparation
 #### 2.1. Image Domain Translation
 
+
+
+```
+<code>
+```
 
 
 #### 2.2. Semantic Scence Parser
@@ -61,14 +66,26 @@ In `mypath.py`, adjust the path to Cityscapes dataset: `<root_path>/Cityscapes/`
 
 ## 3. Training Pipeline
 Our proposed Label Transfer Scene Parser includes a 5-step pipeline:
-<img align="center" src="/visualization/framework.png">
+<img align="center" src="https://hackmd.io/_uploads/ByCVa1G3h.png">
 
 #### 3.1. Image Domain Translation Training
- 
+```
+cd <your_root>/Label_Transfer_Scene_Parser/Domain_Translator/
+```
+```
+<code>
+```
+
 #### 3.2. Synthetic Nighttime Inference
 
-#### 3.3. Semantic Scene Parser Training
+```
+<code>
+```
 
+#### 3.3. Semantic Scene Parser Training
+```
+cd <your_root>/Label_Transfer_Scene_Parser/Semantic_Segmentor/
+```
 ```
 CUDA_VISIBLE_DEVICES=0 python train_val_CL_CE6FL4_stage1_cosine_UNIT.py \
         --dataset Cityscapes \
@@ -110,9 +127,15 @@ CUDA_VISIBLE_DEVICES=0 python predict.py \
 
 The whole script commands can be found in `scripts.sh`.
 
+**Released checkpoints and results:**
+
+We provide the checkpoints of our final model including 2 stages: [S1_CE6FL4](https://1drv.ms/u/s!AjGw2N4vyrj-nUwhrMB3PBV7QIbL?e=SmCRsZ) 
+and [S2_CE6FL4](https://1drv.ms/u/s!AjGw2N4vyrj-nUuA_QRb6_mJtAs4?e=YMze9a).
+Our prediction results on Nighttime Driving Dataset is available at [this link](https://1drv.ms/u/s!AjGw2N4vyrj-nUqBphg65PE5YdK2?e=w4mc4s).
+
 ## 4. Visualization
 <p align="center">
-  <img width="600" src="/visualization/exemplary_results.png">
+  <img width="600" src="https://hackmd.io/_uploads/HJNrAJz3n.png">
 </p>
 
 
