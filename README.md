@@ -204,3 +204,5 @@ Please use this bibtex to cite this repository:
 [Pytorch-Deeplab-Xception](https://github.com/jfzhang95/pytorch-deeplab-xception)
 [Pytorch-FPN](https://github.com/kuangliu/pytorch-fpn)
 [FPN.Pytorch](https://github.com/jwyang/fpn.pytorch)
+[UNIT](https://github.com/mingyuliutw/UNIT)
+[CycleGAN](https://github.com/junyanz/CycleGAN.git)
