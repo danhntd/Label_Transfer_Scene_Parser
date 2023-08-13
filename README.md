@@ -47,7 +47,6 @@ NEXET
     |---trainB.txt
     |---testA.txt
     |---testB.txt
-
 ```
 
 
@@ -179,7 +178,7 @@ We provide the sample translation results in this path `./Semantic_Segmentor/Dom
 Our prediction results on Nighttime Driving Dataset are available at [this link](https://1drv.ms/u/s!AjGw2N4vyrj-nUqBphg65PE5YdK2?e=w4mc4s).
 
 <p align="center">
-  <img width="650" src="/visualization/exemplary_results.png">
+  <img width="650" src="/visualization/ltsp_results.png">
 </p>
 
 
@@ -205,3 +204,5 @@ Please use this bibtex to cite this repository:
 [Pytorch-Deeplab-Xception](https://github.com/jfzhang95/pytorch-deeplab-xception)
 [Pytorch-FPN](https://github.com/kuangliu/pytorch-fpn)
 [FPN.Pytorch](https://github.com/jwyang/fpn.pytorch)
+[UNIT](https://github.com/mingyuliutw/UNIT)
+[CycleGAN](https://github.com/junyanz/CycleGAN.git)
