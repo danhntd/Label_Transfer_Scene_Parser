@@ -47,7 +47,6 @@ NEXET
     |---trainB.txt
     |---testA.txt
     |---testB.txt
-
 ```
 
 
