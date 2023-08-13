@@ -77,7 +77,7 @@ Cityscapes
     |---test
 ```
 
-In `mypath.py`, adjust the path to Cityscapes dataset: `<root_path>/Cityscapes/`
+In `./Semantic_Segmentor/mypath.py`, adjust the path to Cityscapes dataset: `<root_path>/Cityscapes/`
 
 
 
