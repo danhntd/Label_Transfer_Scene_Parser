@@ -8,12 +8,13 @@ This reposity is the official implementation of the paper entitled: **Nighttime 
 Download and install Anaconda with the recommended version from [Anaconda Homepage](https://www.anaconda.com/download): [Anaconda3-2019.03-Linux-x86_64.sh](https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh) 
  
 ```
-cd <your_root>/Label_Transfer_Scene_Parser/
+git clone https://github.com/danhntd/Label_Transfer_Scene_Parser.git
+cd Label_Transfer_Scene_Parser
 curl -O https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh
 bash Anaconda3-2019.03-Linux-x86_64.sh
 ```
 
-After completing the installation, please create and initiate the workspace with the specific versions below.
+After completing the installation, please create and initiate the workspace with the specific versions below. The experiments were conducted on a Linux server with a single `GeForce RTX 2080Ti GPU`, CUDA 10.2, Torch 1.7.
 
 ```
 conda create --name LTSP python=3
@@ -24,18 +25,35 @@ conda env update -f enviroment.yml --prune
 
 
 ## 2. Data Preparation
+In this work, we mainly use [NEXET](https://www.kaggle.com/datasets/solesensei/nexet-original) and [Cityscapes](https://github.com/mcordts/cityscapesScripts.git) for the training process of the whole framework.
+
 #### 2.1. Image Domain Translation
 
-
+Our image domain translation is basically based on the work [UNIT](https://github.com/mingyuliutw/UNIT). Please have a look for further explained information.
 
 ```
-<code>
+NEXET
+|---dataset
+    |---trainA
+        |---*.jpg
+    |---trainB
+        |---*.jpg
+    |---testA
+        |---*.jpg
+    |---testB
+        |---*.jpg
+    # name of images in corresponding folders
+    |---trainA.txt
+    |---trainB.txt
+    |---testA.txt
+    |---testB.txt
+
 ```
 
 
 #### 2.2. Semantic Scence Parser
 
-In this work, we used Cityscapes dataset as our main semantic segmentation training and validation dataset. We also utilized Nighttime Driving Test as our testing set. Other segmentation datasets are considered appropriate when they follow the data structure and labels of Cityscapes. 
+Cityscapes is our main semantic segmentation training and validation dataset. We also utilized [Nighttime Driving Test](http://people.ee.ethz.ch/~daid/NightDriving/) as our testing set. Other segmentation datasets are considered appropriate when they follow the data structure and labels of Cityscapes. 
 Readers can reach the original published work [Cityscapes](https://github.com/mcordts/cityscapesScripts.git) for details.
 Please follow the folder structure to prepare the data:
 
@@ -73,14 +91,24 @@ Our proposed Label Transfer Scene Parser includes a 5-step pipeline:
 cd <your_root>/Label_Transfer_Scene_Parser/Domain_Translator/
 ```
 ```
-<code>
+python train.py \
+                --trainer UNIT \
+                --config configs/<path_to_config_file>.yaml
 ```
 
 #### 3.2. Synthetic Nighttime Inference
 
 ```
-<code>
+python test_batch.py \
+                    --trainer UNIT \
+                    --config path_to_config_file.yaml \
+                    --input_folder testA/ \
+                    --output_folder /output_testA/  \
+                    --checkpoint /path_to_check_point.ckpt \
+                    --a2b 1 \
+                    --output_only
 ```
+The whole script commands can be found in `./Domain_Translator/scripts/*`.
 
 #### 3.3. Semantic Scene Parser Training
 ```
@@ -125,7 +153,7 @@ CUDA_VISIBLE_DEVICES=0 python predict.py \
     --path_to_test_set /path/to/dataset/Cityscapes/
 ```
 
-The whole script commands can be found in `scripts.sh`.
+The whole script commands can be found in `./Semantic_Segmentor/scripts.sh`.
 
 **Released checkpoints and results:**
 
@@ -140,10 +168,18 @@ Download and place the checkpoints at the corresponding paths or re-train the mo
 
 ```
 ## 4. Visualization
-Our prediction results on Nighttime Driving Dataset is available at [this link](https://1drv.ms/u/s!AjGw2N4vyrj-nUqBphg65PE5YdK2?e=w4mc4s).
+
+We provide the sample translation results in this path `./Semantic_Segmentor/Domain_Translator/results`.
 
 <p align="center">
-  <img width="600" src="/visualization/exemplary_results.png">
+  <img width="650" src="/visualization/translation_results.png">
+</p>
+
+
+Our prediction results on Nighttime Driving Dataset are available at [this link](https://1drv.ms/u/s!AjGw2N4vyrj-nUqBphg65PE5YdK2?e=w4mc4s).
+
+<p align="center">
+  <img width="650" src="/visualization/exemplary_results.png">
 </p>
 
 
