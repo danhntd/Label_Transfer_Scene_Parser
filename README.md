@@ -168,7 +168,7 @@ Download and place the checkpoints at the corresponding paths or re-train the mo
 ```
 ## 4. Visualization
 
-We provide the sample translation results in this path `./Semantic_Segmentor/Domain_Translator/results`.
+We provide the sample translation results in this path `./Domain_Translator/results`.
 
 <p align="center">
   <img width="650" src="/visualization/translation_results.png">
