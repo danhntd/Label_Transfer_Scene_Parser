@@ -1,6 +1,6 @@
 # Nighttime Scene Understanding with Label Transfer Scene Parser
 
-This reposity is the official implementation of the paper entitled: **Nighttime Scene Understanding with Label Transfer Scene Parser**. <br>
+This repository is the official implementation of the paper entitled: **Nighttime Scene Understanding with Label Transfer Scene Parser**. <br>
 **Authors**: Thanh-Danh Nguyen, Nguyen Phan, Tam V. Nguyen*, Vinh-Tiep Nguyen, and Minh-Triet Tran.
 
 
@@ -48,8 +48,6 @@ NEXET
     |---testA.txt
     |---testB.txt
 ```
-
-
 #### 2.2. Semantic Scence Parser
 
 Cityscapes is our main semantic segmentation training and validation dataset. We also utilized [Nighttime Driving Test](http://people.ee.ethz.ch/~daid/NightDriving/) as our testing set. Other segmentation datasets are considered appropriate when they follow the data structure and labels of Cityscapes. 
@@ -99,13 +97,13 @@ python train.py \
 
 ```
 python test_batch.py \
-                    --trainer UNIT \
-                    --config path_to_config_file.yaml \
-                    --input_folder testA/ \
-                    --output_folder /output_testA/  \
-                    --checkpoint /path_to_check_point.ckpt \
-                    --a2b 1 \
-                    --output_only
+                --trainer UNIT \
+                --config path_to_config_file.yaml \
+                --input_folder testA/ \
+                --output_folder /output_testA/  \
+                --checkpoint /path_to_check_point.ckpt \
+                --a2b 1 \
+                --output_only
 ```
 The whole script commands can be found in `./Domain_Translator/scripts/*`.
 
@@ -115,41 +113,41 @@ cd <your_root>/Label_Transfer_Scene_Parser/Semantic_Segmentor/
 ```
 ```
 CUDA_VISIBLE_DEVICES=0 python train_val_CL_CE6FL4_stage1_cosine_UNIT.py \
-        --dataset Cityscapes \
-        --save_dir <path/to/save/result>/run_stage1_combine_CE6FL4/
+                --dataset Cityscapes \
+                --save_dir <path/to/save/result>/run_stage1_combine_CE6FL4/
 ```
 
 #### 3.4. Inference on Unlabeled Nighttime Data
 ```
 CUDA_VISIBLE_DEVICES=0 python infer.py \
-    --experiment_dir ./Semantic_Segmentor/run_stage1_combine_CE6FL4 \
-    --path_to_unlabel_set /path/to/unlabel/set/ \
-    --path_to_save /path/to/dataset/Cityscapes/
+                --experiment_dir ./Semantic_Segmentor/run_stage1_combine_CE6FL4 \
+                --path_to_unlabel_set /path/to/unlabel/set/ \
+                --path_to_save /path/to/dataset/Cityscapes/
 ```
 
 #### 3.5. Semantic Scene Parser Re-training
 
 ```
 CUDA_VISIBLE_DEVICES=0 python train_val_CL_CE6FL4_stage2_cosine_UNIT.py \
-        --dataset Cityscapes \
-        --save_dir <path/to/save/result>/run_stage2_combine_CE6FL4/
-        --checkpoint ./Semantic_Segmentor/saved_checkpoints/run_stage1_combine_CE6FL4/Cityscapes/fpn-resnet101/model_best.pth.tar
+                --dataset Cityscapes \
+                --save_dir <path/to/save/result>/run_stage2_combine_CE6FL4/
+                --checkpoint ./Semantic_Segmentor/saved_checkpoints/run_stage1_combine_CE6FL4/Cityscapes/fpn-resnet101/model_best.pth.tar
 ```
 
 **For testing on the trained models:**
 
 ```
 CUDA_VISIBLE_DEVICES=0 python test.py \
-        --dataset Cityscapes \ 
-        --experiment_dir ./Semantic_Segmentor/run_stage2_combine_CE6FL4
+                --dataset Cityscapes \ 
+                --experiment_dir ./Semantic_Segmentor/run_stage2_combine_CE6FL4
 ```
 
 **For inferencing on testing images:**
 ```
 CUDA_VISIBLE_DEVICES=0 python predict.py \
-    --experiment_dir ./Semantic_Segmentor/run_stage2_combine_CE6FL4
-    --path_to_save /path/to/destination/folder/
-    --path_to_test_set /path/to/dataset/Cityscapes/
+                --experiment_dir ./Semantic_Segmentor/run_stage2_combine_CE6FL4
+                --path_to_save /path/to/destination/folder/
+                --path_to_test_set /path/to/dataset/Cityscapes/
 ```
 
 The whole script commands can be found in `./Semantic_Segmentor/scripts.sh`.
@@ -168,7 +166,7 @@ Download and place the checkpoints at the corresponding paths or re-train the mo
 ```
 ## 4. Visualization
 
-We provide the sample translation results in this path `./Domain_Translator/results`.
+We provide the sample translation results in this path `./Semantic_Segmentor/Domain_Translator/results`.
 
 <p align="center">
   <img width="650" src="/visualization/translation_results.png">
@@ -199,10 +197,4 @@ Please use this bibtex to cite this repository:
 
 ## Acknowledgements
 
-[FPN-Semantic-Segmentation](https://github.com/Andy-zhujunwen/FPN-Semantic-segmentation)
-[FCN-Pytorch](https://github.com/pochih/FCN-pytorch)
-[Pytorch-Deeplab-Xception](https://github.com/jfzhang95/pytorch-deeplab-xception)
-[Pytorch-FPN](https://github.com/kuangliu/pytorch-fpn)
-[FPN.Pytorch](https://github.com/jwyang/fpn.pytorch)
-[UNIT](https://github.com/mingyuliutw/UNIT)
-[CycleGAN](https://github.com/junyanz/CycleGAN.git)
+[FPN-Semantic-Segmentation](https://github.com/Andy-zhujunwen/FPN-Semantic-segmentation) [FCN-Pytorch](https://github.com/pochih/FCN-pytorch) [Pytorch-Deeplab-Xception](https://github.com/jfzhang95/pytorch-deeplab-xception) [Pytorch-FPN](https://github.com/kuangliu/pytorch-fpn) [FPN.Pytorch](https://github.com/jwyang/fpn.pytorch) [UNIT](https://github.com/mingyuliutw/UNIT) [CycleGAN](https://github.com/junyanz/CycleGAN.git)
