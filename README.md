@@ -1,8 +1,9 @@
 # Nighttime Scene Understanding with Label Transfer Scene Parser
 
-This repository is the official implementation of the paper entitled: **Nighttime Scene Understanding with Label Transfer Scene Parser**. <br>
+This repository is the official implementation of the paper entitled: **Nighttime Scene Understanding with Label Transfer Scene Parser** at Image and Vision Computing Journal, Sep 2024. <br>
 **Authors**: Thanh-Danh Nguyen, Nguyen Phan, Tam V. Nguyen*, Vinh-Tiep Nguyen, and Minh-Triet Tran.
 
+[[Paper]](https://doi.org/10.1016/j.imavis.2024.105257) [[Code]](https://github.com/danhntd/Label_Transfer_Scene_Parser) [[Project Page]](https://danhntd.github.io/projects.html#LTSP)
 
 ## 1. Environment Setup
 Download and install Anaconda with the recommended version from [Anaconda Homepage](https://www.anaconda.com/download): [Anaconda3-2019.03-Linux-x86_64.sh](https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh) 
@@ -183,14 +184,13 @@ Our prediction results on Nighttime Driving Dataset are available at [this link]
 ## Citation
 Please use this bibtex to cite this repository:
 ```
-@article{nguyen2023ltsp,
-  title={Nighttime Scene Understanding with Label Transfer Scene Parser},
-  author={Nguyen, Thanh-Danh and Phan, Nguyen and Nguyen, Tam V. and Nguyen, Vinh-Tiep and Tran, Minh-Triet},
-  journal={-},
-  volume={-},
-  pages={-},
-  year={2023},
-  publisher={-}
+@article{nguyen2024nighttime,
+  title={Nighttime scene understanding with label transfer scene parser},
+  author={Nguyen, Thanh-Danh and Phan, Nguyen and Nguyen, Tam V and Nguyen, Vinh-Tiep and Tran, Minh-Triet},
+  journal={Image and Vision Computing},
+  pages={105257},
+  year={2024},
+  publisher={Elsevier}
 }
 ```
 
