@@ -49,6 +49,9 @@ NEXET
     |---testA.txt
     |---testB.txt
 ```
+
+We provided the prepared dataset version at [this link]().
+
 #### 2.2. Semantic Scence Parser
 
 Cityscapes is our main semantic segmentation training and validation dataset. We also utilized [Nighttime Driving Test](http://people.ee.ethz.ch/~daid/NightDriving/) as our testing set. Other segmentation datasets are considered appropriate when they follow the data structure and labels of Cityscapes. 
@@ -99,14 +102,16 @@ python train.py \
 ```
 python test_batch.py \
                 --trainer UNIT \
-                --config path_to_config_file.yaml \
-                --input_folder testA/ \
+                --config /path_to_unit_day2night_folder_add_vgg_loss.yaml \
+                --input_folder path_to_folder_testA/ \
                 --output_folder /output_testA/  \
-                --checkpoint /path_to_check_point.ckpt \
+                --checkpoint /path_to_ckpt_day2night_gen_00330000.pt \
                 --a2b 1 \
                 --output_only
 ```
-The whole script commands can be found in `./Domain_Translator/scripts/*`.
+The whole script commands can be found in `./Domain_Translator/scripts/run_nightime2daytime.sh`.
+
+We provide the pretrained checkpoint of our Nighttime Translation Model at [this link](https://1drv.ms/u/c/feb8ca2fded8b031/Ee9ukFUILRtPmD4OdYzJwhEBkKDOqt31CkpZ-Cyh8OViVQ?e=pYqlaN).
 
 #### 3.3. Semantic Scene Parser Training
 ```
@@ -155,14 +160,14 @@ The whole script commands can be found in `./Semantic_Segmentor/scripts.sh`.
 
 **Released checkpoints and results:**
 
-We provide the checkpoints of our final model including 2 stages: [S1_CE6FL4](https://1drv.ms/u/s!AjGw2N4vyrj-nUwhrMB3PBV7QIbL?e=SmCRsZ) 
+We provide the checkpoints of our final segmentation model including 2 stages: [S1_CE6FL4](https://1drv.ms/u/s!AjGw2N4vyrj-nUwhrMB3PBV7QIbL?e=SmCRsZ) 
 and [S2_CE6FL4](https://1drv.ms/u/s!AjGw2N4vyrj-nUuA_QRb6_mJtAs4?e=YMze9a).
 
 
 Download and place the checkpoints at the corresponding paths or re-train the model by yourself:
 ```
-./Semantic_Segmentor/saved_checkpoints/run_stage1_combine_CE6FL4/Cityscapes/fpn-resnet101/model_best.pth.tar
-./Semantic_Segmentor/saved_checkpoints/run_stage2_combine_CE6FL4/Cityscapes/fpn-resnet101/model_best.pth.tar
+./Semantic_Segmentor/saved_checkpoints/run_stage1_combine_CE6FL4/Cityscapes/fpn-resnet101/stage1_model_best.pth.tar
+./Semantic_Segmentor/saved_checkpoints/run_stage2_combine_CE6FL4/Cityscapes/fpn-resnet101/stage2_model_best.pth.tar
 
 ```
 ## 4. Visualization
@@ -188,6 +193,7 @@ Please use this bibtex to cite this repository:
   title={Nighttime scene understanding with label transfer scene parser},
   author={Nguyen, Thanh-Danh and Phan, Nguyen and Nguyen, Tam V and Nguyen, Vinh-Tiep and Tran, Minh-Triet},
   journal={Image and Vision Computing},
+  volume={151},
   pages={105257},
   year={2024},
   publisher={Elsevier}
