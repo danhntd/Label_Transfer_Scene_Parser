@@ -32,6 +32,9 @@ In this work, we mainly use [NEXET](https://www.kaggle.com/datasets/solesensei/n
 
 Our image domain translation is basically based on the work [UNIT](https://github.com/mingyuliutw/UNIT). Please have a look for further explained information.
 
+
+We provided the prepared version of NEXET dataset at [this link](https://drive.google.com/file/d/1j1SoI4NjlHZ1jOciVgcA0zGspruIA5oF/view?usp=sharing) with the following structure.
+
 ```
 NEXET
 |---dataset
@@ -49,8 +52,6 @@ NEXET
     |---testA.txt
     |---testB.txt
 ```
-
-We provided the prepared dataset version at [this link]().
 
 #### 2.2. Semantic Scence Parser
 
