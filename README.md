@@ -21,7 +21,7 @@ After completing the installation, please create and initiate the workspace with
 conda create --name LTSP python=3
 conda activate LTSP
 conda install pytorch==1.7.0 torchvision==0.8.0 torchaudio==0.7.0 cudatoolkit=10.2 -c pytorch
-conda env update -f enviroment.yml --prune
+conda env update -f environment.yml --prune
 ```
 
 
